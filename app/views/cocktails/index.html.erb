@@ -1,6 +1,9 @@
 <h1>Cocktail youpi</h1>
-<% @cocktails.each do |cocktail| %>
-<%= cocktail.name %>
-<% end %>
+<ul>
+  <% Cocktail.all.each do |cocktail| %>
+<li><%= cocktail.name %>
 
+    <%= link_to "See more", cocktail_path(cocktail) %> </li>
+  <% end %>
+</ul>
 <%= link_to "Add a new super cocktail" , new_cocktail_path %>

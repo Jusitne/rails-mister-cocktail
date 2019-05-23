@@ -10,20 +10,19 @@ class DosesController < ApplicationController
     @dose.cocktail = @cocktail
     if @dose.save
       redirect_to cocktail_path(@cocktail)
-      # redirect_to(Restaurant.last)
     else
       render :new
-   end
+    end
   end
 
   def destroy
     @dose = Dose.find(params[:id])
     @dose.destroy
-    redirect_to new_cocktail_path
+    redirect_to cocktail_path(@cocktail)
+    #@garden = @plant.garden
   end
 
-    def dose_params
+  def dose_params
     params.require(:dose).permit(:description, :ingredient_id)
   end
-
 end
