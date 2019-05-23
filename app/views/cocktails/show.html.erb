@@ -1,0 +1,6 @@
+<h1>Awesome recette for awesome cockails</h1>
+<h2> <%= @cocktail.name %></h2>
+<% @cocktail.doses.each do |dose| %>
+<%= dose.description %>
+<% end %>
+<%= link_to "add some doses",  new_cocktail_dose_path(@cocktail) %>
