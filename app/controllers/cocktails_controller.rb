@@ -2,25 +2,27 @@ class CocktailsController < ApplicationController
     before_action :find_cocktail, only: [:show]
   def index
     @cocktails = Cocktail.all
-  end
+    end
 
   def show
     find_cocktail
-  end
+ end
 
-  def create
-    @cocktail = Cocktail.new(cocktail_params)
-    if @cocktail.save
+ def create
+   @cocktail = Cocktail.new(cocktail_params)
+   if @cocktail.save
       redirect_to cocktail_path(@cocktail)
     else
-      render :new
+     render :new
     end
   end
 
   def new
     @cocktail = Cocktail.new
   end
-
+  def article_params
+    params.require(:article).permit(:title, :body, :photo)
+  end
   private
 
   def cocktail_params
